@@ -5,10 +5,10 @@ const { Restaurant, Menu, Item } = require("./models/index");
 const { sequelize } = require("./db");
 
 //TODO:
-app.use(express.json);
+app.use(express.json());
 app.get("/restaurants", async (request, response) => {
   const respond = await Restaurant.findAll({
-    include: [{ model: Menu, include: [Item] }],
+    include: [{ model: Menu, include: [{ model: Item }] }],
   });
 
   response.send(respond);
